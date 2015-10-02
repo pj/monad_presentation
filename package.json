@@ -1,0 +1,28 @@
+{
+  "name": "monad_presentation",
+  "version": "0.0.1",
+  "description": "Monad presentation for Wellington JS meetup",
+  "author": "Paul Johnson <paul@johnson.kiwi.nz>",
+  "scripts": {
+    "server": "http-server .",
+    "preprocess": ""
+  },
+  "main": "monads.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pj/monad_presentation"
+  },
+  "bugs": {
+    "url": "https://github.com/pj/monad_presentation/issues"
+  },
+  "keywords": [
+    "monads",
+    "wellingtonjs",
+    "presentation"
+  ],
+  "analyze": true,
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.8.5"
+  }
+}
