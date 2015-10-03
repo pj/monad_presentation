@@ -5,7 +5,12 @@
   "author": "Paul Johnson <paul@johnson.kiwi.nz>",
   "scripts": {
     "server": "http-server .",
-    "preprocess": ""
+    "styles": "sass monads.scss",
+    "preprocess": "./preprocessor.js monads.js > monads.md",
+    "develop":
+         "livereload & sass --watch monads.scss & watch \"npm run-script preprocess\"",
+    "test": "mocha --harmony monads.js",
+    "test:watch": "mocha --watch --harmony monads.js"
   },
   "main": "monads.js",
   "repository": {
@@ -23,6 +28,9 @@
   "analyze": true,
   "license": "MIT",
   "dependencies": {
-    "http-server": "^0.8.5"
+    "commander": "^2.8.1",
+    "esprima": "^2.6.0",
+    "http-server": "^0.8.5",
+    "watch": "^0.16.0"
   }
 }

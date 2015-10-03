@@ -1,6 +1,20 @@
+/*slide
+
+#Monads for Mortals
+
+paul@johnson.kiwi.nz
+
+???
+
+Some notes
+*/
+
 // Intro
 
+/*slide
 
+qwer
+*/
 
 // Option monad
 function validateStuff(stuff) {
@@ -88,24 +102,16 @@ function get_users_items_from_web_m(user_ids) {
 // Try/Catch monad
 
 function something_that_might_fail() {
-
-
 }
 
-function ifNot
-
 function something_that_might_fail_m() {
-
-    var might_have_failed =
-
+    var might_have_failed = "adsf";
 }
 
 // If/Then monad
 function basic_if_else_m(possibly_true_possibly_not) {
 
 }
-
-function
 
 function basic_if_else_m(possibly_true_possibly_not) {
 
@@ -127,9 +133,9 @@ function basic_if_else_m(possibly_true_possibly_not) {
 // Hack syntax
 
 function asdf() {
-    var valid = stuff.get("username") >>> (username) => stuff.get("password") >>>\
-                stuff.get("confirmation");
+    //var valid = stuff.get("username") >>> (username) => stuff.get("password") >>>\
+                //stuff.get("confirmation");
 
-    var users_items
+    var users_items;
 
 }
