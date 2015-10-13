@@ -1,141 +1,257 @@
 /*slide
-
-#Monads for Mortals
-
-paul@johnson.kiwi.nz
-
-???
-
-Some notes
+layout: true
+class: center, middle
 */
-
-// Intro
 
 /*slide
+# Monad Primer.
 
-qwer
+paul@johnson.kiwi.nz
 */
 
-// Option monad
-function validateStuff(stuff) {
-    if (stuff.get("username") == null) {
-        return false;
-    }
+/*slide
+# Executable presentation.
 
-    if (stuff.get("password") == null) {
-        return false;
-    }
+[https://github.com/pj/monad_presentation](https://github.com/pj/monad_presentation)
+???
+Slides in markdown, code and tests in one file.
+*/
 
-    if (stuff.get("confirmaion") == null) {
-        return false;
-    }
+/*slide
+# Monad? Say what...?
+*/
 
-    return true;
+/*slide
+# Curse of the Monad
+
+*"In addition to it begin useful, it is also cursed and the curse of the monad
+is that once you get the epiphany, once you understand - "oh that's what it is"
+- you lose the ability to explain it to anybody."*
+
+**- Douglas Crockford**
+???
+So two possibilities:
+- If I actually understand it then I won't be able to explain it to you.
+- If I don't understand it then you'll learn it incorrectly.
+*/
+
+/*slide
+Roughly analagous to design patterns in object oriented programming...
+
+???
+Hopefully more useful though... :)
+Though more about combining/composing functions than about
+composing/structuring objects.
+*/
+
+/*slide
+... though a bit more general.
+*/
+
+/*slide
+# Basic parts of the pattern
+
+- An object that acts as a container and can possibly be "null-like".
+- A function that takes the contained value and returns a new container
+possibly with a new value.
+- A function that takes the container and the function from to(if not "null-like" )
+*/
+
+/*slide
+Complex subject, so only enough time to give a high level overview.
+
+Will show examples of transforming "normal" code to monadic code.
+
+Covered much more thorougly in
+["Learn you a Haskell"](http://learnyouahaskell.com/).
+*/
+
+/*slide
+Example 1. Regular asynchronous/callback io.
+???
+Should be pretty familiar to everyone.
+*/
+
+function example_1_normal(cb) {
+    // TODO
 }
 
-function ifNotNullThenCallCallbackElseReturnNull(option, cb) {
-    if (option == null) {
-        return null;
-    } else {
-        return cb(option);
-    }
+describe("example 1 normal", function(done){
+
+});
+
+/*slide
+{example_1_normal}
+*/
+
+function example_1_monad() {
+    // TODO
 }
 
-function validateStuffM(stuff) {
-    var username_or_null = stuff.get("username")
-    var password_or_null = ifNotNullThenCallCallbackElseReturnNull(username_or_null, (username) => stuff.get("password"))
-    var confirmation_or_null = ifNotNullThenCallCallbackElseReturnNull(password_or_null, (password) => stuff.get("confirmation"))
+describe("example 1 normal", function(done){
 
-    return confirmation_or_null == null ? false : true;
-}
+});
 
-// List monad
-function get_users_items(users) {
-    users_items = [];
+/*slide
+{example_1_monad}
+???
+What pr
+*/
+
+/*slide
+Example 3. Arrays/lists.
+
+Getting all the items a user has ever purchased.
+???
+Should be pretty familiar to everyone.
+*/
+
+function get_users_items_normal(users) {
+    var items = [];
     for (user of users) {
-        for (order in user.orders) {
-            for (item in order.items) {
-                users_items.push(item);
+        for (order of user.orders) {
+            for (item of order.items) {
+
             }
         }
     }
 
-    return users_items;
-}
-
-function ifNotEmptyThenCallCallbackForEachAndFlattenElseReturnEmpty(list, cb) {
-    var results = [];
-    for (element of list) {
-        var x = cb(element);
-        results.concat(x);
-    }
-
-    return results;
-}
-
-var i56y = ifNotEmptyThenCallCallbackForEachAndFlattenElseReturnEmpty;
-
-function get_users_items_m(users) {
-    orders = i56y(users, (user) => user.orders)
-    items = i56y(orders, (order) => order.items)
     return items;
 }
 
-// Future monad
-function get_users_items_from_web(user_ids) {
+var user_fixture = {
+    name: "Bob",
+    orders: [
+        {
+            id: 1,
+            items: [
+                {
 
+                },
+                {
+
+                }
+            ]
+        },
+        {
+            id: 1,
+            items: [
+                {
+
+                },
+                {
+
+                }
+            ]
+        },
+        {
+            id: 1,
+            items: [
+                {
+
+                },
+                {
+
+                }
+            ]
+        },
+    ]
+}
+
+describe("get user's items normal", function(done){
+
+});
+
+/*slide
+{get_users_items_normal}
+*/
+
+Array.prototype.then = function(func) {
+    for (item of this) {
+
+    }
 
 }
 
-function ifNotErrorCallCallbackElseReturnError(future, cb) {
-
+function get_users_items_monad() {
+    return user_fixture.users
+        .then((user) => user.orders)
+        .then((order) => order.items);
 }
 
-var i35r = ifNotErrorCallCallbackElseReturnError;
+describe("example 1 normal", function(done){
 
-function get_users_items_from_web_m(user_ids) {
+});
 
+/*slide
+{example_1_monad}
+???
+What pr
+*/
+
+/*slide
+Example 4. State Monad.
+
+
+
+???
+All examples up to now
+*/
+
+function example_1_normal(cb) {
+    // TODO
 }
 
-// File monad
+describe("example 1 normal", function(done){
 
-// Try/Catch monad
+});
 
-function something_that_might_fail() {
+/*slide
+{example_1_normal}
+*/
+
+function example_1_monad() {
+    // TODO
 }
 
-function something_that_might_fail_m() {
-    var might_have_failed = "adsf";
+describe("example 1 normal", function(done){
+
+});
+
+/*slide
+{example_1_monad}
+???
+What pr
+*/
+
+/*slide
+Example 5. If/Else monad.
+???
+Should be pretty familiar to everyone.
+*/
+
+function example_1_normal(cb) {
+    // TODO
 }
 
-// If/Then monad
-function basic_if_else_m(possibly_true_possibly_not) {
+describe("example 1 normal", function(done){
 
+});
+
+/*slide
+{example_1_normal}
+*/
+
+function example_1_monad() {
+    // TODO
 }
 
-function basic_if_else_m(possibly_true_possibly_not) {
+describe("example 1 normal", function(done){
 
-}
+});
 
-// Continuation Monad
-
-/**
-
-
-
-**/
-
-// syntax sugar in other languages
-// haskell
-
-// scala
-
-// Hack syntax
-
-function asdf() {
-    //var valid = stuff.get("username") >>> (username) => stuff.get("password") >>>\
-                //stuff.get("confirmation");
-
-    var users_items;
-
-}
+/*slide
+{example_1_monad}
+???
+What pr
+*/

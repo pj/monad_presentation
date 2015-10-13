@@ -4,15 +4,14 @@
   "description": "Monad presentation for Wellington JS meetup",
   "author": "Paul Johnson <paul@johnson.kiwi.nz>",
   "scripts": {
-    "server": "http-server .",
-    "styles": "sass monads.scss",
-    "preprocess": "./preprocessor.js monads.js > monads.md",
+    "server": "http-server",
+    "styles": "sass monads.scss dist/monads.css",
+    "preprocess": "preprocessor.js monads.js > dist/monads.md",
     "develop":
-         "livereload & sass --watch monads.scss & watch \"npm run-script preprocess\"",
+         "http-server & livereload & sass --watch monads.scss & watch \"npm run-script preprocess\"",
     "test": "mocha --harmony monads.js",
     "test:watch": "mocha --watch --harmony monads.js"
   },
-  "main": "monads.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/pj/monad_presentation"
@@ -28,8 +27,6 @@
   "analyze": true,
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.8.1",
-    "esprima": "^2.6.0",
     "http-server": "^0.8.5",
     "watch": "^0.16.0"
   }
