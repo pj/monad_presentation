@@ -5,10 +5,10 @@
   "author": "Paul Johnson <paul@johnson.kiwi.nz>",
   "scripts": {
     "server": "http-server",
-    "styles": "sass monads.scss dist/monads.css",
-    "preprocess": "preprocessor.js monads.js > dist/monads.md",
-    "develop":
-         "http-server & livereload & sass --watch monads.scss & watch \"npm run-script preprocess\"",
+    "styles": "sass monads.scss:dist/monads.css",
+    "preprocess": "executable_presentation monads.js dist/monads.md",
+    "preprocess:watch": "executable_presentation --watch monads.js dist/monads.md",
+    "develop": "http-server & livereload & sass --watch monads.scss:dist/monads.css & executable_presentation --watch monads.js dist/monads.md",
     "test": "mocha --harmony monads.js",
     "test:watch": "mocha --watch --harmony monads.js"
   },
@@ -27,7 +27,11 @@
   "analyze": true,
   "license": "MIT",
   "dependencies": {
+    "executable_presentation": "file:../../executable_presentation",
     "http-server": "^0.8.5",
+    "js-beautify": "^1.5.10",
+    "jshint": "^2.8.0",
+    "request": "^2.65.0",
     "watch": "^0.16.0"
   }
 }
